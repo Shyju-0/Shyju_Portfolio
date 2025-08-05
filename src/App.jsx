@@ -246,7 +246,7 @@ const Portfolio = () => {
           }}
         />
       </div>
-      {/* Navigation */}
+      {/* Nav Bar */}
       <nav className="fixed top-0 w-full bg-black/20 backdrop-blur-md z-50 border-b border-white/10 transition-all duration-300">
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
@@ -333,7 +333,7 @@ const Portfolio = () => {
             {/* Profile Image */}
             <div className="flex-shrink-0 animate-fadeInLeft">
               <div className="relative group">
-                <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-transparent bg-gradient-to-r from-cyan-400 to-purple-400 p-1 hover:scale-105 transition-all duration-500">
+                <div className="mt-24 md:mt-0 w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-transparent bg-gradient-to-r from-cyan-400 to-purple-400 p-1 hover:scale-105 transition-all duration-500">
                   <div className="w-full h-full rounded-full overflow-hidden bg-slate-900">
                     <img
                       src={UserImage}
@@ -669,10 +669,16 @@ const Portfolio = () => {
                 <Mail className="text-cyan-400 mx-auto mb-4" size={32} />
                 <h3 className="text-xl font-semibold mb-2">Email</h3>
                 <a
+                  href="mailto:shyjusha333@gmail.com"
+                  className="block md:hidden text-gray-300 hover:text-cyan-400 transition-colors"
+                >
+                  shyjusha333@gmail.com
+                </a>
+                <a
                   href="https://mail.google.com/mail/?view=cm&fs=1&to=shyjusha333@gmail.com&su=Hello&body=Hi%20Shyju"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-cyan-400 transition-colors"
+                  className="text-gray-300 hover:text-cyan-400 transition-colors hidden md:block"
                 >
                   shyjusha333@gmail.com
                 </a>
