@@ -1,48 +1,36 @@
-import React, { useState, useEffect } from "react";
-import {
-  Menu,
-  X,
-  ExternalLink,
-  Github,
-  Linkedin,
-  Mail,
-  Phone,
-  MapPin,
-  Code,
-  Database,
-  Server,
-  Globe,
-  ChevronDown,
-} from "lucide-react";
-import UserImg from "../public/WhatsApp Image 2025-08-04 at 7.25.33 PM.jpeg?url";
+import React, { useState, useEffect } from 'react';
+import { Menu, X, ExternalLink, Github, Linkedin, Mail, Phone, MapPin, Code, Database, Server, Globe, ChevronDown } from 'lucide-react';
+import UserImage from '../public/WhatsApp Image 2025-08-04 at 7.25.33 PM.jpeg?url'
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState('home');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState({});
 
+  // Mouse tracking for parallax effects
   useEffect(() => {
     const handleMouseMove = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  // Intersection Observer for scroll animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          setIsVisible((prev) => ({
+          setIsVisible(prev => ({
             ...prev,
-            [entry.target.id]: entry.isIntersecting,
+            [entry.target.id]: entry.isIntersecting
           }));
         });
       },
       { threshold: 0.1 }
     );
 
-    const sections = document.querySelectorAll("section[id]");
+    const sections = document.querySelectorAll('section[id]');
     sections.forEach((section) => observer.observe(section));
 
     return () => {
@@ -52,14 +40,7 @@ const Portfolio = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = [
-        "home",
-        "about",
-        "skills",
-        "experience",
-        "projects",
-        "contact",
-      ];
+      const sections = ['home', 'about', 'skills', 'experience', 'projects', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -67,11 +48,8 @@ const Portfolio = () => {
         if (element) {
           const offsetTop = element.offsetTop;
           const offsetHeight = element.offsetHeight;
-
-          if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + offsetHeight
-          ) {
+          
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
             setActiveSection(section);
             break;
           }
@@ -79,134 +57,85 @@ const Portfolio = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToSection = (sectionId) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
   };
 
   const skills = {
-    "Languages & Frameworks": [
-      "JavaScript (ES6)",
-      "TypeScript",
-      "React.js",
-      "Next.js",
-      "Node.js",
-    ],
-    Frontend: ["HTML", "CSS", "Redux", "Tailwind CSS", "Bootstrap"],
-    "Backend & API": [
-      "Express.js",
-      "REST API",
-      "MVC",
-      "JWT",
-      "Redis",
-      "Socket.IO",
-    ],
-    Databases: ["MongoDB", "MySQL", "PostgreSQL"],
-    "Tools & DevOps": [
-      "Git",
-      "GitHub Actions",
-      "Postman",
-      "Figma",
-      "Linux",
-      "VS Code",
-      "Docker",
-      "AWS",
-      "Azure",
-    ],
-    Deployment: ["Render", "Netlify", "Vercel"],
+    'Languages & Frameworks': ['JavaScript (ES6)', 'TypeScript', 'React.js', 'Next.js', 'Node.js'],
+    'Frontend': ['HTML', 'CSS', 'Redux', 'Tailwind CSS', 'Bootstrap'],
+    'Backend & API': ['Express.js', 'REST API', 'MVC', 'JWT', 'Redis', 'Socket.IO'],
+    'Databases': ['MongoDB', 'MySQL', 'PostgreSQL'],
+    'Tools & DevOps': ['Git', 'GitHub Actions', 'Postman', 'Figma', 'Linux', 'VS Code', 'Docker', 'AWS', 'Azure'],
+    'Deployment': ['Render', 'Netlify', 'Vercel']
   };
 
   const experiences = [
     {
-      title: "Full Stack Developer - Intern",
-      company: "Rexknar Creative Solutions",
-      period: "02/2024 - 04/2024",
-      description:
-        "Developed comprehensive management systems and gained hands-on experience with modern web technologies.",
+      title: 'Full Stack Developer - Intern',
+      company: 'Rexknar Creative Solutions',
+      period: '02/2024 - 04/2024',
+      description: 'Developed comprehensive management systems and gained hands-on experience with modern web technologies.',
       achievements: [
-        "Built School Management System using Next.js, TypeScript, and PostgreSQL",
-        "Developed Company Management System with multiple modules",
-        "Implemented CI/CD workflows using GitHub Actions",
-        "Achieved 30% reduction in API response times through optimization",
-      ],
+        'Built School Management System using Next.js, TypeScript, and PostgreSQL',
+        'Developed Company Management System with multiple modules',
+        'Implemented CI/CD workflows using GitHub Actions',
+        'Achieved 30% reduction in API response times through optimization'
+      ]
     },
     {
-      title: "Full Stack Developer (MERN)",
-      company: "Since May 2024",
-      period: "May 2024 - Present",
-      description:
-        "Continuing to build scalable web applications and expanding expertise in full-stack development.",
+      title: 'Full Stack Developer (MERN)',
+      company: 'Since May 2024',
+      period: 'May 2024 - Present',
+      description: 'Continuing to build scalable web applications and expanding expertise in full-stack development.',
       achievements: [
-        "Created dynamic UIs using React.js with Redux state management",
-        "Engineered robust backend APIs with Node.js and MongoDB",
-        "Integrated Socket.IO for real-time functionality",
-        "Implemented clean MVC architecture patterns",
-      ],
-    },
+        'Created dynamic UIs using React.js with Redux state management',
+        'Engineered robust backend APIs with Node.js and MongoDB',
+        'Integrated Socket.IO for real-time functionality',
+        'Implemented clean MVC architecture patterns'
+      ]
+    }
   ];
 
   const projects = [
     {
-      title: "School Management System",
-      tech: ["Next.js", "TypeScript", "PostgreSQL", "TanStack Query"],
-      description:
-        "Comprehensive system managing student attendance, examinations, grading, timetables, and registration for both students and staff.",
-      features: [
-        "Student & Staff Management",
-        "Attendance Tracking",
-        "Examination System",
-        "Grading & Reports",
-        "Timetable Management",
-      ],
+      title: 'School Management System',
+      tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'TanStack Query'],
+      description: 'Comprehensive system managing student attendance, examinations, grading, timetables, and registration for both students and staff.',
+      features: ['Student & Staff Management', 'Attendance Tracking', 'Examination System', 'Grading & Reports', 'Timetable Management']
     },
     {
-      title: "Company Management System",
-      tech: ["MERN Stack", "Socket.IO", "Redux"],
-      description:
-        "Scalable system including modules for gate pass, employee, visitor, vehicle, storage, vendor, labour, and contract management.",
-      features: [
-        "Employee Management",
-        "Visitor Tracking",
-        "Vehicle Management",
-        "Inventory Control",
-        "Vendor Relations & More",
-      ],
+      title: 'Company Management System',
+      tech: ['MERN Stack', 'Socket.IO', 'Redux'],
+      description: 'Scalable system including modules for gate pass, employee, visitor, vehicle, storage, vendor, labour, and contract management.',
+      features: ['Employee Management', 'Visitor Tracking', 'Vehicle Management', 'Inventory Control', 'Vendor Relations & More']
     },
     {
-      title: "Content Management System",
-      tech: ["PERN Stack", "SEO Optimization"],
-      description:
-        "Dynamic CMS for managing website content, user roles, media uploads, and SEO-friendly pages.",
-      features: [
-        "Content Creation",
-        "Media Management",
-        "User Role System",
-        "SEO Optimization",
-        "Responsive Dashboard",
-      ],
-    },
+      title: 'Content Management System',
+      tech: ['PERN Stack', 'SEO Optimization'],
+      description: 'Dynamic CMS for managing website content, user roles, media uploads, and SEO-friendly pages.',
+      features: ['Content Creation', 'Media Management', 'User Role System', 'SEO Optimization', 'Responsive Dashboard']
+    }
   ];
 
   const certifications = [
     {
-      title: "Certified Course in Cloud DevOps",
-      institution:
-        "AICTE ATAL Academy | ST. Xavier's Catholic College of Engineering",
-      date: "Aug 2024",
-      description:
-        "One-week Faculty Development Program covering CI/CD pipelines, infrastructure automation, and cloud deployment strategies with hands-on training in AWS, Azure, Docker, and Kubernetes.",
+      title: 'Certified Course in Cloud DevOps',
+      institution: 'AICTE ATAL Academy | ST. Xavier\'s Catholic College of Engineering',
+      date: 'Aug 2024',
+      description: 'One-week Faculty Development Program covering CI/CD pipelines, infrastructure automation, and cloud deployment strategies with hands-on training in AWS, Azure, Docker, and Kubernetes.'
     },
     {
-      title: "Full-Stack Web Development (MERN)",
-      institution: "Rexknar Coding Academy",
-      date: "6-month program",
-      description:
-        "Intensive hands-on training focused on building full-stack web applications using MongoDB, Express.js, React, and Node.js with real-world project experience.",
-    },
+      title: 'Full-Stack Web Development (MERN)',
+      institution: 'Rexknar Coding Academy',
+      date: '6-month program',
+      description: 'Intensive hands-on training focused on building full-stack web applications using MongoDB, Express.js, React, and Node.js with real-world project experience.'
+    }
   ];
 
   return (
@@ -251,6 +180,7 @@ const Portfolio = () => {
             <div className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300 cursor-pointer">
               Shyju S
             </div>
+
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8">
               {[
@@ -333,8 +263,7 @@ const Portfolio = () => {
                 <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-transparent bg-gradient-to-r from-cyan-400 to-purple-400 p-1 hover:scale-105 transition-all duration-500">
                   <div className="w-full h-full rounded-full overflow-hidden bg-slate-900">
                     <img
-                      src={UserImg}
-                      // src="../public/WhatsApp Image 2025-08-04 at 7.25.33 PM.jpeg"
+                      src={UserImage}
                       alt="Shyju S - Full Stack Developer"
                       className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                     />
@@ -717,11 +646,6 @@ const Portfolio = () => {
 
       {/* Footer */}
       <footer className="py-8 border-t border-white/10">
-        {/* <div className="container mx-auto px-6 text-center">
-          <p className="text-gray-400">
-            © 2024 Shyju S. Built with React, Vite, and Tailwind CSS.
-          </p>
-        </div> */}
         <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-sm text-gray-400">
           <p>© {new Date().getFullYear()} Shyju S. All rights reserved.</p>
           <p className="mt-2 md:mt-0">
