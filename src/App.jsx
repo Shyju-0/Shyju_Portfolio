@@ -1,9 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, ExternalLink, Github, Linkedin, Mail, Phone, MapPin, Code, Database, Server, Globe, ChevronDown } from 'lucide-react';
-import UserImage from '../public/WhatsApp Image 2025-08-04 at 7.25.33 PM.jpeg?url'
+import React, { useState, useEffect } from "react";
+import {
+  Menu,
+  X,
+  ExternalLink,
+  Github,
+  Linkedin,
+  Mail,
+  Phone,
+  MapPin,
+  Code,
+  Database,
+  Server,
+  Globe,
+  ChevronDown,
+} from "lucide-react";
+import UserImage from "../public/WhatsApp Image 2025-08-04 at 7.25.33 PM.jpeg?url";
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState("home");
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState({});
 
@@ -12,8 +26,8 @@ const Portfolio = () => {
     const handleMouseMove = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   // Intersection Observer for scroll animations
@@ -21,16 +35,16 @@ const Portfolio = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          setIsVisible(prev => ({
+          setIsVisible((prev) => ({
             ...prev,
-            [entry.target.id]: entry.isIntersecting
+            [entry.target.id]: entry.isIntersecting,
           }));
         });
       },
       { threshold: 0.1 }
     );
 
-    const sections = document.querySelectorAll('section[id]');
+    const sections = document.querySelectorAll("section[id]");
     sections.forEach((section) => observer.observe(section));
 
     return () => {
@@ -40,7 +54,14 @@ const Portfolio = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'skills', 'experience', 'projects', 'contact'];
+      const sections = [
+        "home",
+        "about",
+        "skills",
+        "experience",
+        "projects",
+        "contact",
+      ];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -48,8 +69,11 @@ const Portfolio = () => {
         if (element) {
           const offsetTop = element.offsetTop;
           const offsetHeight = element.offsetHeight;
-          
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
             setActiveSection(section);
             break;
           }
@@ -57,85 +81,134 @@ const Portfolio = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (sectionId) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
     setIsMenuOpen(false);
   };
 
   const skills = {
-    'Languages & Frameworks': ['JavaScript (ES6)', 'TypeScript', 'React.js', 'Next.js', 'Node.js'],
-    'Frontend': ['HTML', 'CSS', 'Redux', 'Tailwind CSS', 'Bootstrap'],
-    'Backend & API': ['Express.js', 'REST API', 'MVC', 'JWT', 'Redis', 'Socket.IO'],
-    'Databases': ['MongoDB', 'MySQL', 'PostgreSQL'],
-    'Tools & DevOps': ['Git', 'GitHub Actions', 'Postman', 'Figma', 'Linux', 'VS Code', 'Docker', 'AWS', 'Azure'],
-    'Deployment': ['Render', 'Netlify', 'Vercel']
+    "Languages & Frameworks": [
+      "JavaScript (ES6)",
+      "TypeScript",
+      "React.js",
+      "Next.js",
+      "Node.js",
+    ],
+    Frontend: ["HTML", "CSS", "Redux", "Tailwind CSS", "Bootstrap"],
+    "Backend & API": [
+      "Express.js",
+      "REST API",
+      "MVC",
+      "JWT",
+      "Redis",
+      "Socket.IO",
+    ],
+    Databases: ["MongoDB", "MySQL", "PostgreSQL"],
+    "Tools & DevOps": [
+      "Git",
+      "GitHub Actions",
+      "Postman",
+      "Figma",
+      "Linux",
+      "VS Code",
+      "Docker",
+      "AWS",
+      "Azure",
+    ],
+    Deployment: ["Render", "Netlify", "Vercel"],
   };
 
   const experiences = [
     {
-      title: 'Full Stack Developer - Intern',
-      company: 'Rexknar Creative Solutions',
-      period: '02/2024 - 04/2024',
-      description: 'Developed comprehensive management systems and gained hands-on experience with modern web technologies.',
+      title: "Full Stack Developer - Intern",
+      company: "Rexknar Creative Solutions",
+      period: "02/2024 - 04/2024",
+      description:
+        "Developed comprehensive management systems and gained hands-on experience with modern web technologies.",
       achievements: [
-        'Built School Management System using Next.js, TypeScript, and PostgreSQL',
-        'Developed Company Management System with multiple modules',
-        'Implemented CI/CD workflows using GitHub Actions',
-        'Achieved 30% reduction in API response times through optimization'
-      ]
+        "Built School Management System using Next.js, TypeScript, and PostgreSQL",
+        "Developed Company Management System with multiple modules",
+        "Implemented CI/CD workflows using GitHub Actions",
+        "Achieved 30% reduction in API response times through optimization",
+      ],
     },
     {
-      title: 'Full Stack Developer (MERN)',
-      company: 'Since May 2024',
-      period: 'May 2024 - Present',
-      description: 'Continuing to build scalable web applications and expanding expertise in full-stack development.',
+      title: "Full Stack Developer (MERN)",
+      company: "Since May 2024",
+      period: "May 2024 - Present",
+      description:
+        "Continuing to build scalable web applications and expanding expertise in full-stack development.",
       achievements: [
-        'Created dynamic UIs using React.js with Redux state management',
-        'Engineered robust backend APIs with Node.js and MongoDB',
-        'Integrated Socket.IO for real-time functionality',
-        'Implemented clean MVC architecture patterns'
-      ]
-    }
+        "Created dynamic UIs using React.js with Redux state management",
+        "Engineered robust backend APIs with Node.js and MongoDB",
+        "Integrated Socket.IO for real-time functionality",
+        "Implemented clean MVC architecture patterns",
+      ],
+    },
   ];
 
   const projects = [
     {
-      title: 'School Management System',
-      tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'TanStack Query'],
-      description: 'Comprehensive system managing student attendance, examinations, grading, timetables, and registration for both students and staff.',
-      features: ['Student & Staff Management', 'Attendance Tracking', 'Examination System', 'Grading & Reports', 'Timetable Management']
+      title: "School Management System",
+      tech: ["Next.js", "TypeScript", "PostgreSQL", "TanStack Query"],
+      description:
+        "Comprehensive system managing student attendance, examinations, grading, timetables, and registration for both students and staff.",
+      features: [
+        "Student & Staff Management",
+        "Attendance Tracking",
+        "Examination System",
+        "Grading & Reports",
+        "Timetable Management",
+      ],
     },
     {
-      title: 'Company Management System',
-      tech: ['MERN Stack', 'Socket.IO', 'Redux'],
-      description: 'Scalable system including modules for gate pass, employee, visitor, vehicle, storage, vendor, labour, and contract management.',
-      features: ['Employee Management', 'Visitor Tracking', 'Vehicle Management', 'Inventory Control', 'Vendor Relations & More']
+      title: "Company Management System",
+      tech: ["MERN Stack", "Socket.IO", "Redux"],
+      description:
+        "Scalable system including modules for gate pass, employee, visitor, vehicle, storage, vendor, labour, and contract management.",
+      features: [
+        "Employee Management",
+        "Visitor Tracking",
+        "Vehicle Management",
+        "Inventory Control",
+        "Vendor Relations & More",
+      ],
     },
     {
-      title: 'Content Management System',
-      tech: ['PERN Stack', 'SEO Optimization'],
-      description: 'Dynamic CMS for managing website content, user roles, media uploads, and SEO-friendly pages.',
-      features: ['Content Creation', 'Media Management', 'User Role System', 'SEO Optimization', 'Responsive Dashboard']
-    }
+      title: "Content Management System",
+      tech: ["PERN Stack", "SEO Optimization"],
+      description:
+        "Dynamic CMS for managing website content, user roles, media uploads, and SEO-friendly pages.",
+      features: [
+        "Content Creation",
+        "Media Management",
+        "User Role System",
+        "SEO Optimization",
+        "Responsive Dashboard",
+      ],
+    },
   ];
 
   const certifications = [
     {
-      title: 'Certified Course in Cloud DevOps',
-      institution: 'AICTE ATAL Academy | ST. Xavier\'s Catholic College of Engineering',
-      date: 'Aug 2024',
-      description: 'One-week Faculty Development Program covering CI/CD pipelines, infrastructure automation, and cloud deployment strategies with hands-on training in AWS, Azure, Docker, and Kubernetes.'
+      title: "Certified Course in Cloud DevOps",
+      institution:
+        "AICTE ATAL Academy | ST. Xavier's Catholic College of Engineering",
+      date: "Aug 2024",
+      description:
+        "One-week Faculty Development Program covering CI/CD pipelines, infrastructure automation, and cloud deployment strategies with hands-on training in AWS, Azure, Docker, and Kubernetes.",
     },
     {
-      title: 'Full-Stack Web Development (MERN)',
-      institution: 'Rexknar Coding Academy',
-      date: '6-month program',
-      description: 'Intensive hands-on training focused on building full-stack web applications using MongoDB, Express.js, React, and Node.js with real-world project experience.'
-    }
+      title: "Full-Stack Web Development (MERN)",
+      institution: "Rexknar Coding Academy",
+      date: "6-month program",
+      description:
+        "Intensive hands-on training focused on building full-stack web applications using MongoDB, Express.js, React, and Node.js with real-world project experience.",
+    },
   ];
 
   return (
@@ -591,12 +664,14 @@ const Portfolio = () => {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-4 gap-8">
+            <div className="grid md:grid-cols-4 gap-6">
               <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 text-center hover:border-cyan-400/50 transition-all duration-300">
                 <Mail className="text-cyan-400 mx-auto mb-4" size={32} />
                 <h3 className="text-xl font-semibold mb-2">Email</h3>
                 <a
-                  href="mailto:shyjusha333@gmail.com"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=shyjusha333@gmail.com&su=Hello&body=Hi%20Shyju"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-300 hover:text-cyan-400 transition-colors"
                 >
                   shyjusha333@gmail.com
