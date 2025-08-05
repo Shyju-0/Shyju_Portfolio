@@ -14,7 +14,7 @@ import {
   Globe,
   ChevronDown,
 } from "lucide-react";
-
+import UserImg from "../public/WhatsApp Image 2025-08-04 at 7.25.33 PM.jpeg?url";
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -333,8 +333,8 @@ const Portfolio = () => {
                 <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-transparent bg-gradient-to-r from-cyan-400 to-purple-400 p-1 hover:scale-105 transition-all duration-500">
                   <div className="w-full h-full rounded-full overflow-hidden bg-slate-900">
                     <img
-                      // src={UserImage}
-                      src="../public/WhatsApp Image 2025-08-04 at 7.25.33 PM.jpeg"
+                      src={UserImg}
+                      // src="../public/WhatsApp Image 2025-08-04 at 7.25.33 PM.jpeg"
                       alt="Shyju S - Full Stack Developer"
                       className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                     />
